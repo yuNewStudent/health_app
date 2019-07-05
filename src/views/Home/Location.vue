@@ -16,7 +16,7 @@
         </select>
       </div>
     </div>
-    <scroll class="user_list">
+    <scroll class="user_list" v-if='all'>
       <p class="title">人员信息</p>
       <li class="user_item">
         <span class="name">张三</span>
@@ -73,7 +73,7 @@
         <span class="address"><img src="@/assets/icon/导肮IC.png" alt=""></span>
       </li>
     </scroll>
-    <!-- <div class="user_info">
+    <div class="user_info" v-else>
       <p class="title">人员信息</p>
       <p>
         <span>姓名: 余建</span>
@@ -85,9 +85,9 @@
         <span>失能情况: 一般</span>
       </p>
       <p>
-        <span>地址: 成都市锦江区某某区某某门牌号</span>
+        <span>地址: 成都市锦江区某某区某某门牌号<img src="@/assets/icon/导肮IC.png" alt=""></span>
       </p>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -101,6 +101,7 @@ export default {
   },
   data () {
     return {
+      all: false
     }
   },
   computed: {},
@@ -168,17 +169,23 @@ export default {
       padding: .25rem 0 .1rem;
     }
   }
-  // .user_info {
-  //   padding: 0 .2rem;
-  //   .title {
-  //     font-size: .28rem;
-  //   }
-  //   p {
-  //     font-size: .24rem;
-  //     display: flex;
-  //     margin: .3rem 0;
-  //     justify-content: space-between;
-  //   }
-  // }
+  .user_info {
+    padding: 0 .2rem;
+    .title {
+      font-size: .28rem;
+    }
+    p {
+      font-size: .24rem;
+      display: flex;
+      margin: .3rem 0;
+      justify-content: space-between;
+      align-items: center;
+      img{
+        width: .24rem;
+        height: .24rem;
+        margin-left: .2rem;
+      }
+    }
+  }
 }
 </style>

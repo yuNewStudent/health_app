@@ -32,19 +32,19 @@ export default {
           icon: require('@/assets/icon/home/地图IC—高亮.png')
         },
         {
-          icon: require('@/assets/icon/home/填写问卷_灰.png')
+          icon: require('@/assets/icon/home/填写问卷IC—高亮.png')
         },
         {
-          icon: require('@/assets/icon/home/客户IC_灰.png')
+          icon: require('@/assets/icon/home/客户IC—高亮.png')
         },
         {
-          icon: require('@/assets/icon/home/我的IC—灰.png')
+          icon: require('@/assets/icon/home/我的IC—高亮.png')
         }
       ],
       navs: [
         {
           title: '地图',
-          icon: require('@/assets/icon/home/地图IC—高亮.png'),
+          icon: require('@/assets/icon/home/地图IC—灰.png'),
           name: 'Location'
         },
         {

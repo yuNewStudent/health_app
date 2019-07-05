@@ -8,7 +8,7 @@
 export default {
   name: 'App',
   created () {
-    console.log(0)
+    // console.log(0)
   }
 }
 </script>
