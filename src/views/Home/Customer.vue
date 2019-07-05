@@ -1,6 +1,22 @@
 <template>
   <div class="Customer">
-    <header>客户</header>
+    <header>
+      <div class="logo">
+        <span></span>
+        <span></span>
+      </div>
+      <div v-if='!searching'>客户</div>
+      <div class="search_btn" v-if='!searching' @click='searching=!searching'>
+        <!-- <img src="@/assets/icon/搜索IC.png" alt=""> -->
+        搜索
+      </div>
+      <transition name="fade">
+        <p class="search" v-if='searching'>
+          <input type="text" placeholder="请填入人名/档案号/身份证">
+          <img src="@/assets/icon/搜索IC.png" alt="">
+        </p>
+      </transition>
+    </header>
     <div class="select_wrapper">
       <div class="select_item">
         <select>
@@ -260,6 +276,7 @@ export default {
   },
   data () {
     return {
+      searching: false
     }
   },
   computed: {},
@@ -272,10 +289,60 @@ export default {
   header {
     width: 100vw;
     line-height: .96rem;
+    height: .96rem;
     text-align: center;
     color: white;
     font-size: .36rem;
     background:rgba(0,36,150,1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .18rem;
+    box-sizing: border-box;
+    .logo {
+      height: .96rem;
+      width: 1.2rem;
+      position: relative;
+      span {
+        top: .15rem;
+        position: absolute;
+        display: inline-block;
+        width: .64rem;
+        height: .64rem;
+        border: 1px solid white;
+        border-radius: 50%;
+        left: 0;
+        &:last-child {
+          left: .55rem;
+        }
+      }
+    }
+    .search_btn {
+      width: 1.2rem;
+      text-align: right;
+    }
+    .search {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:rgba(241,244,255,1);
+      border: 1px solid rgba(161,182,249,1);
+      border-radius: 6px;
+      padding: 0 10px;
+      height: .6rem;
+      input {
+        font-size: .24rem;
+        height: .6rem;
+        box-sizing: border-box;
+        flex: 1;
+        background: transparent;
+      }
+      img {
+        width: .38rem;
+        height: .35rem;
+      }
+    }
   }
   .select_wrapper {
     height: .64rem;
@@ -294,8 +361,7 @@ export default {
         // width: 100%;
         // padding: 0 20px;
         height: .64rem;
-        border: none;
-        outline: none;
+        background: white;
       }
     }
   }
@@ -322,5 +388,11 @@ export default {
       }
     }
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

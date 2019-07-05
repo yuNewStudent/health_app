@@ -1,6 +1,6 @@
 <template>
   <div class="Location">
-    <header>地图</header>
+    <header-view :title='headerTitle'></header-view>
     <div class="map">
       <map-view :control='false' class="map_wrapper"></map-view>
       <div class="select">
@@ -94,14 +94,17 @@
 <script>
 import MapView from '@/components/amap'
 import Scroll from '@/components/scroll'
+import HeaderView from '@/components/Header'
 export default {
   components: {
     MapView,
-    Scroll
+    Scroll,
+    HeaderView
   },
   data () {
     return {
-      all: false
+      all: false,
+      headerTitle: '地图'
     }
   },
   computed: {},
@@ -114,14 +117,6 @@ export default {
   position: fixed;
   top: .48rem;
   bottom: 1rem;
-  header {
-    width: 100vw;
-    line-height: .96rem;
-    text-align: center;
-    color: white;
-    font-size: .36rem;
-    background:rgba(0,36,150,1);
-  }
   .map {
     position: relative;
     .map_wrapper {
@@ -136,12 +131,12 @@ export default {
       overflow: hidden;
       select {
         vertical-align: top;
-        outline: none;
         padding: 4px 5px 6px;
         border-radius: 5px;
         float: left;
         margin-right: 5px;
         box-shadow:0px 2px 5px 0px rgba(136,136,136,0.7);
+        background: white;
       }
     }
   }
@@ -177,7 +172,7 @@ export default {
     p {
       font-size: .24rem;
       display: flex;
-      margin: .3rem 0;
+      margin: .15rem 0;
       justify-content: space-between;
       align-items: center;
       img{

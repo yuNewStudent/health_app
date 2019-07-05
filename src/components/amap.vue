@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import AMap from 'AMap'
+// import AMap from 'AMap'
 export default {
   props: ['control'],
   components: {},
@@ -23,7 +23,27 @@ export default {
       ranging: null, // 测距
       isRanging: false,
       satellite: null,
-      currentControl: 'standar'
+      currentControl: 'standar',
+      addressArr: [
+        {
+          address: '四川省成都市武侯区ocg国际中心'
+        },
+        {
+          address: '四川省成都市锦江区静康路536号'
+        },
+        {
+          address: '四川省成都市成华区二仙桥东三路1号'
+        },
+        {
+          address: '四川省成都市青羊区金沙遗址路8号'
+        },
+        {
+          address: '四川省成都市武侯区肖家河街40号'
+        },
+        {
+          address: '四川省成都市成华区八里桥路67号'
+        }
+      ]
     }
   },
   computed: {},
@@ -37,6 +57,13 @@ export default {
         center: this.center,
         // 地图显示范围
         zoom: 10
+      })
+      // 地址、经纬度转换
+      AMap.plugin(['AMap.Geocoder'], () => {
+        this.geocoder = new AMap.Geocoder({
+          radius: 1000,
+          extensions: 'all'
+        })
       })
       // 添加缩放标尺控件
       // AMap.plugin(['AMap.Scale'], () => {
@@ -68,12 +95,47 @@ export default {
         map: this.map
       })
       this.satellite.setMap(this.map)
+    },
+    // 地址转为经纬度
+    translateLngLat (address) {
+      return new Promise((resolve, reject) => {
+        this.geocoder.getLocation(address, function(status, result) {
+          if (status === 'complete' && result.info === 'OK') {
+            // result中对应详细地理坐标信息
+            // console.log(result.geocodes[0].location)
+            const lnglat = [result.geocodes[0].location.lng, result.geocodes[0].location.lat]
+            resolve(lnglat)
+          }
+        })
+      })
+    },
+    // 绘制圆形
+    drawCircle (center) {
+      var circleMarker = new AMap.CircleMarker({
+        center,
+        radius: 7,//3D视图下，CircleMarker半径不要超过64px
+        strokeColor:'white',
+        strokeWeight: 2,
+        strokeOpacity: 0.5,
+        fillColor:'rgba(84,118,224,1)',
+        fillOpacity: 1,
+        zIndex: 1,
+        bubble: true,
+        cursor: 'pointer',
+        clickable: true
+      })
+      circleMarker.setMap(this.map)
     }
   },
   created () {},
   mounted () {
     this.$nextTick(() => {
       this.initMap()
+      this.addressArr.forEach(item => {
+        this.translateLngLat(item.address).then(data => {
+          this.drawCircle(data)
+        })
+      })
     })
   }
 }

@@ -2,14 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const App = () => import('@/views/Home')
-// const Login = () => import('@/views/Login')
+const Login = () => import('@/views/Login')
 // const Register = () => import('@/views/Regisiter')
 // const ResetPassword = () => import('@/views/ResetPassword')
 const Location = () => import('@/views/Home/Location')
 const Write = () => import('@/views/Home/Write')
 const My = () => import('@/views/Home/My')
 const Customer = () => import('@/views/Home/Customer')
-
+const ChoiceCompany = () => import('@/views/ChoiceCompany')
 Vue.use(Router)
 
 export default new Router({
@@ -41,12 +41,17 @@ export default new Router({
           component: Customer
         }
       ]
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/choicecompany',
+      name: 'ChoiceCompany',
+      component: ChoiceCompany
     }
-    // {
-    //   path: '/login',
-    //   name: 'Login',
-    //   component: Login
-    // },
     // {
     //   path: '/register',
     //   name: 'Register',

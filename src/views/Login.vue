@@ -1,125 +1,132 @@
 <template>
   <div class="login">
-    <div class="bglayer"></div>
-    <div class="home_header">登录</div>
-    <div class="content">
-      <span class="head_img">
-        <img src="@/assets/icon/home/userImg.png" alt="">
-      </span>
-      <p class="user_name">
-        <img src="@/assets/icon/login/手机IC.png" alt="">
-        <input v-model="userInfo.name" placeholder="请输入登陆账号" type="text">
-      </p>
-      <p class="password">
-        <img class="pass" src="@/assets/icon/login/密码IC.png" alt="">
-        <input @blur.native.capture="checkInputName" :state="NameStatus" v-model="userInfo.password" :type="type" placeholder="请输入登陆密码">
-        <img @click='changeType' class="eye" :src="img" alt="">
-      </p>
-      <p class="info">
-        <span @click='goRePassword'>忘记密码？</span>
-      </p>
-      <div @click='handleLogin' class="login_btn">登录</div>
-      <div @click='goRegister' class="register_btn">注册</div>
+    <div class="top">
+      <div class="logo">
+        <img src="" alt="">
+      </div>
+    </div>
+    <div class="login_wrapper">
+      <div class="input_wrapper">
+        <span>
+          <img src="@/assets/icon/账号IC.png" alt="">
+        </span>
+        <div class="input">
+          <input type="text" name="" id="" placeholder="请输入手机号或工号">
+        </div>
+      </div>
+      <div class="input_wrapper">
+        <span>
+          <img src="@/assets/icon/密码IC.png" alt="">
+        </span>
+        <div class="input">
+          <input type="password" name="" id="" placeholder="请输入密码">
+        </div>
+      </div>
+      <div class="control">
+        <div class="remenber_password">记住密码</div>
+        <div class="forget_password">忘记密码?</div>
+      </div>
+      <div class="submit" @click='handleLogin'>登录</div>
     </div>
   </div>
 </template>
 
 <script>
 import { Switch, Toast, DatetimePicker, Indicator } from 'mint-ui'
-import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'login',
   data () {
     return {
-      type: 'password',
-      img: require('@/assets/icon/login/eye—open.png'),
       userInfo: {
         name: '',
         password: ''
       },
-      NameStatus:'',
     }
   },
   computed: {
     // ...mapMutations(['setUser'])
   },
   methods: {
-    ...mapMutations(['setUser']),
-    checkInputName(){ 
-      // 判断是全为汉字
-      var regex = /^[\u4E00-\u9FA5]+$/
-      var name = this.userInfo.name
-      if (!regex.test(name)) {
-        this.NameStatus="error"
-      } else {
-        this.NameStatus="success"
-      }
-    },
-    changeType () {
-      if (this.type === 'text') {
-        this.type = 'password'
-        this.img = require('@/assets/icon/login/eye—open.png')
-      } else {
-        this.type = 'text'
-        this.img = require('@/assets/icon/login/eye—close.png')
-      }
-    },
+    
+    // checkInputName(){ 
+    //   // 判断是全为汉字
+    //   var regex = /^[\u4E00-\u9FA5]+$/
+    //   var name = this.userInfo.name
+    //   if (!regex.test(name)) {
+    //     this.NameStatus="error"
+    //   } else {
+    //     this.NameStatus="success"
+    //   }
+    // },
+    // changeType () {
+    //   if (this.type === 'text') {
+    //     this.type = 'password'
+    //     this.img = require('@/assets/icon/login/eye—open.png')
+    //   } else {
+    //     this.type = 'text'
+    //     this.img = require('@/assets/icon/login/eye—close.png')
+    //   }
+    // },
     handleLogin () {
-      const data = {
-        appuserNumber: this.userInfo.name,
-        appuserPassword: this.userInfo.password
-      }
-      if (!this.userInfo.name || !this.userInfo.password) {
-        return Toast({
-          message: '登陆信息不能为空',
-          iconClass: 'icon icon-success'
-        })
-      }
-      Indicator.open('登陆中...')
-      let timer = setTimeout(() => {
-        Indicator.close()
-        Toast({
-          message: '服务器出错',
-          iconClass: 'icon icon-error'
-        })
-      }, 5000)
-      this.$http.post(`${config.httpBaseUrl}/appuser/login`, data).then(res => {
-        clearTimeout(timer)
-        Indicator.close()
-        if (res.code === 200) {
-          this.$router.push({
-            name: 'Home'
-          })
-          this.$http.get(`${config.httpBaseUrl}/appuser/getappuser`, {
-            params: {
-              number: this.userInfo.name
-            }}).then(res => {
-            if (res.code === 200) {
-              this.setUser(res.date.appuser)
-              localStorage.setItem('user', JSON.stringify(res.date.appuser))
-              this.$router.push({
-                name: 'Home'
-              })
-            }
-          })
-        } else {
-          Toast({
-            message: '登陆失败\n账号和密码输入错误',
-            iconClass: 'icon icon-success'
-          })
-        }
-      })
-    },
-    goRePassword () {
+      // 选择公司
       this.$router.push({
-        name: 'ResetPassword'
+        name: 'ChoiceCompany'
       })
+    //   const data = {
+    //     appuserNumber: this.userInfo.name,
+    //     appuserPassword: this.userInfo.password
+    //   }
+    //   if (!this.userInfo.name || !this.userInfo.password) {
+    //     return Toast({
+    //       message: '登陆信息不能为空',
+    //       iconClass: 'icon icon-success'
+    //     })
+    //   }
+    //   Indicator.open('登陆中...')
+    //   let timer = setTimeout(() => {
+    //     Indicator.close()
+    //     Toast({
+    //       message: '服务器出错',
+    //       iconClass: 'icon icon-error'
+    //     })
+    //   }, 5000)
+    //   this.$http.post(`${config.httpBaseUrl}/appuser/login`, data).then(res => {
+    //     clearTimeout(timer)
+    //     Indicator.close()
+    //     if (res.code === 200) {
+    //       this.$router.push({
+    //         name: 'Home'
+    //       })
+    //       this.$http.get(`${config.httpBaseUrl}/appuser/getappuser`, {
+    //         params: {
+    //           number: this.userInfo.name
+    //         }}).then(res => {
+    //         if (res.code === 200) {
+    //           this.setUser(res.date.appuser)
+    //           localStorage.setItem('user', JSON.stringify(res.date.appuser))
+    //           this.$router.push({
+    //             name: 'Home'
+    //           })
+    //         }
+    //       })
+    //     } else {
+    //       Toast({
+    //         message: '登陆失败\n账号和密码输入错误',
+    //         iconClass: 'icon icon-success'
+    //       })
+    //     }
+    //   })
     },
-    goRegister () {
-      this.$router.push({
-        name: 'Register'
-      })
-    }
+    // goRePassword () {
+    //   this.$router.push({
+    //     name: 'ResetPassword'
+    //   })
+    // },
+    // goRegister () {
+    //   this.$router.push({
+    //     name: 'Register'
+    //   })
+    // }
   }
 }
 </script>
@@ -128,119 +135,94 @@ export default {
 .login {
   width: 100vw;
   height: 100vh;
-  background: #49BA94;
-  .bglayer {
-    width: 100vw;
-    height: .48rem;
-    background: #49BA94;
-  }
-  .home_header {
-    font-size: 0.36rem;
-    text-align: center;
-    color: white;
-    height: 0.96rem;
-    line-height: 0.96rem;
-    padding: 0 0.36rem;
-  }
-  .content {
-    text-align: center;
-    width: 5.5rem;
-    margin: 0 auto;
-    font-size: .26rem;
-    .head_img {
-      background: white;
-      display: inline-block;
-      margin-top: 40px;
-      width: 1.4rem;
-      height: 1.4rem;
-      padding: 5px;
-      border-radius: 50%;
-      img {
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .user_name {
-      background:rgba(255,255,255,0.6);
-      display: flex;
-      border-radius: .45rem;
-      height: .9rem;
-      padding: 0 .45rem;
-      align-items: center;
-      margin: 20px 0;
-      img {
-        width: .3rem;
-        height: .32rem;
-      }
-      input {
-        width: 100%;
-        background: transparent;
-        height: .32rem;
-        margin-left: 10px;
-      }
-    }
-    .password {
-      background:rgba(255,255,255,0.6);
-      display: flex;
-      border-radius: .45rem;
-      height: .9rem;
-      padding: 0 .45rem;
-      align-items: center;
-      input {
-        width: 100%;
-        background: transparent;
-        height: .32rem;
-        margin-left: 10px;
-      }
-      img.pass {
-        width: .3rem;
-        height: .32rem;
-      }
-      img.eye {
-        width: .36rem;
-        height: .16rem;
-      }
-    }
-    .info {
-      color: #FFFFFF;
-      font-size: .24rem;
-      margin: 10px 0;
-    }
-    .login_btn {
-      width: 5.50rem;
-      height: .90rem;
-      line-height: .90rem;
-      color: #15BF86;
-      font-size: .38rem;
-      background:rgba(255,255,255,1);
-      box-shadow: 0px 2px 6px 0px rgba(20,146,104,0.8);
-      border-radius: .45rem;
-      margin: 50px 0 20px;
-    }
-    .register_btn {
-      color: white;
+  .top {
+    height: 5.56rem;
+    background:linear-gradient(0deg,rgba(0,36,150,1), rgba(21,70,223,1));
+    border-radius: 0 0 .6rem .6rem;
+    .logo {
       position: relative;
-      &:after {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        content: '';
+      top: 1.5rem;
+      margin: 0 auto;
+      border: 1px solid white;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+    }
+  }
+  .login_wrapper {
+    position: absolute;
+    top: 4rem;
+    width: 6rem;
+    height: 6.4rem;
+    box-shadow: 0px 1px 4px 0px rgba(8,22,68,0.6);
+    border-radius: 5px;
+    background: white;
+    left: 50%;
+    margin-left: -3rem;
+    box-sizing: border-box;
+    padding: .5rem;
+    .input_wrapper {
+      width: 100%;
+      display: flex;
+      align-content: center;
+      height: .7rem;
+      margin-top: .8rem;
+      background:rgba(237,240,250,1);
+      border-radius: .7rem;
+      box-shadow: 0px 1px 2px 0px rgba(5,20,69,0.8) inset;
+      span {
         display: inline-block;
-        width: 2.1rem;
-        height: 1px;
-        background:rgba(255,255,255,1);
+        box-shadow:0px 1px 2px 0px rgba(5,20,69,0.8) inset;
+        border-radius:.35rem;
+        width: .7rem;
+        height: .7rem;
+        position: relative;
+        img {
+          width: .3rem;
+          height: .3rem;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
-      &:before {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        content: '';
-        display: inline-block;
-        width: 2.1rem;
-        height: 1px;
-        background:rgba(255,255,255,1);
+      .input {
+        border-radius:.35rem;
+        flex: 1;
+        padding: 0 .2rem;
+        height: .5rem;
+        margin-top: .1rem;
+        input {
+          width: 100%;
+          height: 100%;
+          vertical-align: top;
+          background:rgba(237,240,250,1);
+          border-radius:.35rem;
+          font-size: .26rem;
+        }
       }
+    }
+    .control {
+      overflow: hidden;
+      font-size: .24rem;
+      margin: .1rem 0;
+      .remenber_password {
+        float: left;
+        color:rgba(0,36,150,1);
+      }
+      .forget_password {
+        float: right;
+        color:rgba(49,49,49,1);
+      }
+    }
+    .submit {
+      margin-top: 30px;
+      line-height: .7rem;
+      background:rgba(0,36,150,1);
+      border-radius:20px;
+      font-size: .28rem;
+      color: white;
+      text-align: center;
     }
   }
 }
