@@ -209,6 +209,7 @@ export default {
     button {
       width: 100%;
       height: .6rem;
+      line-height: .6rem;
       background:rgba(0,36,150,1);
       border-radius: 3px;
       border: none;

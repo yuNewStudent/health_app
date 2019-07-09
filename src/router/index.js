@@ -8,7 +8,9 @@ const Login = () => import('@/views/Login')
 const Location = () => import('@/views/Home/Location')
 const Write = () => import('@/views/Home/Write')
 const My = () => import('@/views/Home/My')
+const Setting = () => import('@/components/My/Setting')
 const Customer = () => import('@/views/Home/Customer')
+const CustomerDetail = () => import('@/components/Customer/CustomerDetail')
 const ChoiceCompany = () => import('@/views/ChoiceCompany')
 Vue.use(Router)
 
@@ -29,6 +31,13 @@ export default new Router({
           path: '/my',
           name: 'My',
           component: My,
+          children: [
+            {
+              path: '/my/setting',
+              name: 'Setting',
+              component: Setting
+            }
+          ]
         },
         {
           path: '/write',
@@ -38,7 +47,14 @@ export default new Router({
         {
           path: '/customer',
           name: 'Customer',
-          component: Customer
+          component: Customer,
+          children: [
+            {
+              path: '/customer/detail',
+              name: 'CustomerDetail',
+              component: CustomerDetail
+            }
+          ]
         }
       ]
     },

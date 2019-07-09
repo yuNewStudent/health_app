@@ -1,27 +1,38 @@
 <template>
-<div class="me">
-  <header-view :title='headerTitle'></header-view>
-  <div class="user_info">
-    <p class="head_icon">
-      <img src="@/assets/icon/logo.png" alt="">
-    </p>
-    <p class="name">余建</p>
+  <div class="me">
+    <header-view :title='headerTitle'></header-view>
+    <div class="user_info">
+      <p class="head_icon">
+        <img src="@/assets/icon/logo.png" alt="">
+      </p>
+      <p class="name">余建</p>
+    </div>
+    <ul class="navs">
+      <router-link
+        tag='li'
+        class="nav_item"
+        to="/my/setting"
+        @click='getCurrentLocation'>
+        <img src="@/assets/icon/签到IC.png" alt="">
+        <span>签到</span>
+      </router-link>
+      <router-link
+        tag='li'
+        class="nav_item"
+        to="/my/setting">
+        <img src="@/assets/icon/消息IC.png" alt="">
+        <span>消息</span>
+      </router-link>
+      <router-link
+        tag='li'
+        class="nav_item"
+        to="/my/setting">
+        <img src="@/assets/icon/个人设置IC.png" alt="">
+        <span>个人设置</span>
+      </router-link>
+    </ul>
+    <router-view></router-view>
   </div>
-  <ul class="navs">
-    <li class="nav_item" @click='getCurrentLocation'>
-      <img src="@/assets/icon/签到IC.png" alt="">
-      <span>签到</span>
-    </li>
-    <li class="nav_item">
-      <img src="@/assets/icon/消息IC.png" alt="">
-      <span>消息</span>
-    </li>
-    <li class="nav_item">
-      <img src="@/assets/icon/个人设置IC.png" alt="">
-      <span>个人设置</span>
-    </li>
-  </ul>
-</div>
 </template>
 
 <script>

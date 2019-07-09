@@ -40,231 +40,25 @@
       </div>
     </div>
     <scroll class="customers_wrapper">
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
+      <p
+        class="customer"
+        v-for='(item, index) in customers'
+        :key='index'
+        @click='getCustomerDetail'>
+        <span class="name">{{item.name}}</span>
+        <span class="age">{{item.age}}</span>
+        <span class="service">{{item.service}}</span>
         <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
-        </span>
-      </p>
-      <p class="customer">
-        <span class="name">张三</span>
-        <span class="age">67岁</span>
-        <span class="service">服务中心A</span>
-        <span class="visited">
-          <span class="no">未回访</span>/<span>已随访</span>
+          <span :class="{no:!item.visited}">未回访</span>
+          <span :class="{no:!item.visited&&!item.lateVisit}">/</span>
+          <span :class="{no:!item.lateVisit}">已随访</span>
         </span>
       </p>
     </scroll>
+    <router-view></router-view>
+    <!-- <customer-detail
+      v-if='isShowCustomerDetail'
+      @closeCustomerDetail=></customer-detail> -->
   </div>
 </template>
 
@@ -276,11 +70,136 @@ export default {
   },
   data () {
     return {
-      searching: false
+      searching: false,
+      customers: [
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },{
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        },
+        {
+          name: '张三',
+          age: '63岁',
+          service: '服务中心A',
+          visited: true,
+          lateVisit: false
+        }
+      ]
+      // isShowCustomerDetail: false
     }
   },
   computed: {},
-  methods: {},
+  methods: {
+    // 打开客户详情页
+    getCustomerDetail () {
+      this.$router.push({
+        name: 'CustomerDetail',
+        params: {
+          id: 0
+        }
+      })
+      // this.isShowCustomerDetail = true
+    }
+  },
   created () {}
 }
 </script>
