@@ -9,6 +9,8 @@ const Location = () => import('@/views/Home/Location')
 const Write = () => import('@/views/Home/Write')
 const My = () => import('@/views/Home/My')
 const Setting = () => import('@/components/My/Setting')
+const SignIn = () => import('@/components/My/sign-in')
+const News = () => import('@/components/My/news')
 const Customer = () => import('@/views/Home/Customer')
 const CustomerDetail = () => import('@/components/Customer/CustomerDetail')
 const ChoiceCompany = () => import('@/views/ChoiceCompany')
@@ -36,6 +38,16 @@ export default new Router({
               path: '/my/setting',
               name: 'Setting',
               component: Setting
+            },
+            {
+              path: '/my/signin',
+              name: 'SignIn',
+              component: SignIn
+            },
+            {
+              path: '/my/news',
+              name: 'News',
+              component: News
             }
           ]
         },

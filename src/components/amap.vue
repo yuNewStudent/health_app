@@ -125,6 +125,9 @@ export default {
         clickable: true
       })
       circleMarker.setMap(this.map)
+      circleMarker.on('click', () => {
+        this.$emit('showInfo')
+      })
     }
   },
   created () {},

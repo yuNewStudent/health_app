@@ -51,23 +51,37 @@
     <div class="comfirm">
       <button>开始填表</button>
     </div>
+    <!-- <mt-popup
+      v-model="popupVisible"
+      position="bottom"
+      ref='ss'>
+    </mt-popup> -->
+    <canvas-view></canvas-view>
   </div>
 </template>
 
 <script>
 import HeaderView from '@/components/Header'
+import CanvasView from '@/components/canvas'
+import { Popup } from 'mint-ui'
 export default {
   components: {
-    HeaderView
+    HeaderView,
+    CanvasView,
+    Popup
   },
   data () {
     return {
-      headerTitle: '问卷调查'
+      headerTitle: '问卷调查',
+      popupVisible: true
     }
   },
   computed: {},
   methods: {},
-  created () {}
+  mounted () {
+    this.$nextTick(() => {
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -76,6 +90,7 @@ export default {
   position: fixed;
   top: .48rem;
   bottom: 1rem;
+  overflow-y: auto;
   header {
     width: 100vw;
     line-height: .96rem;

@@ -250,6 +250,7 @@ export default {
       border-radius: 6px;
       padding: 0 10px;
       height: .6rem;
+      position: relative;
       input {
         font-size: .24rem;
         height: .6rem;
@@ -309,9 +310,11 @@ export default {
   }
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
+  right: 0;
+  transition: right 1s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+  // opacity: 0;
+  right: -4.5rem;
 }
 </style>

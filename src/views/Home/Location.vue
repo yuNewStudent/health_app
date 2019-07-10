@@ -2,7 +2,10 @@
   <div class="Location">
     <header-view :title='headerTitle'></header-view>
     <div class="map">
-      <map-view :control='false' class="map_wrapper"></map-view>
+      <map-view
+        :control='false'
+        class="map_wrapper"
+        @showInfo='showInfo'></map-view>
       <div class="select">
         <select>
           <option value ="volvo">服务中心1</option>
@@ -108,7 +111,11 @@ export default {
     }
   },
   computed: {},
-  methods: {},
+  methods: {
+    showInfo () {
+      console.log('showInfo')
+    }
+  },
   created () {}
 }
 </script>
@@ -118,10 +125,13 @@ export default {
   top: .48rem;
   bottom: 1rem;
   .map {
-    position: relative;
+    position: absolute;
+    top: 0.96rem;
+    bottom: 0;
+    width: 100vw;
     .map_wrapper {
       width: 100vw;
-      height: 7.5rem;
+      height: 100%;
       position: relative;
     }
     .select {
@@ -145,8 +155,9 @@ export default {
     width: 100vw;
     box-sizing: border-box;
     position: absolute;
+    background: white;
     bottom: 0;
-    top: 8.46rem;
+    height: 2.8rem;
     overflow: hidden;
     .user_item {
       font-size: .24rem;
@@ -161,11 +172,17 @@ export default {
     }
     .title {
       font-size: .34rem;
-      padding: .25rem 0 .1rem;
+      padding: .25rem 0 0;
     }
   }
   .user_info {
-    padding: 0 .2rem;
+    padding: 0.2rem;
+    position: absolute;
+    bottom: 0;
+    height: 2.8rem;
+    width: 100vw;
+    box-sizing: border-box;
+    background: white;
     .title {
       font-size: .28rem;
     }

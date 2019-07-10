@@ -27,7 +27,7 @@
             <span class="name">余建</span>
           </div>
         </li>
-        <li>
+        <li @click='isShowResetPassword=!isShowResetPassword'>
           <div class="left">
             <img src="@/assets/icon/My/密码IC.png" alt="">
             <span>密码</span>
@@ -40,17 +40,23 @@
       </ul>
       <div @click='handleExit' class="exit_btn">退出登录</div>
     </div>
+    <reset-password
+      v-if='isShowResetPassword'
+      @back='isShowResetPassword=!isShowResetPassword'></reset-password>
   </div>
 </template>
 
 <script>
 import { Header } from 'mint-ui'
+import ResetPassword from '@/components/My/reset-password'
 export default {
   components: {
-    Header
+    Header,
+    ResetPassword
   },
   data () {
     return {
+      isShowResetPassword: false
     }
   },
   computed: {},
